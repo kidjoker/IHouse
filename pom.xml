@@ -6,6 +6,14 @@
   <packaging>pom</packaging>
   <modules>
   	<module>IHouse-websys</module>
+  	<module>IHouse-action</module>
+  	<module>IHouse-api</module>
+  	<module>IHouse-common</module>
+  	<module>IHouse-util</module>
+  	<module>IHouse-design</module>
+  	<module>IHouse-service</module>
+  	<module>IHouse-Service-impl</module>
+  	<module>IHouse-commonUtil</module>
   </modules>
   
   <properties>

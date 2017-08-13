@@ -5,12 +5,16 @@
     <artifactId>IHouse</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>IHouse-websys</artifactId>
-  <packaging>war</packaging>
+  <artifactId>IHouse-action</artifactId>
   <dependencies>
   	<dependency>
   		<groupId>cn.kidjoker</groupId>
-  		<artifactId>IHouse-action</artifactId>
+  		<artifactId>IHouse-api</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>cn.kidjoker</groupId>
+  		<artifactId>IHouse-Service-impl</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
