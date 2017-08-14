@@ -14,6 +14,7 @@
   	<module>IHouse-service</module>
   	<module>IHouse-Service-impl</module>
   	<module>IHouse-commonUtil</module>
+  	<module>IHouse-batch</module>
   </modules>
   
   <properties>
