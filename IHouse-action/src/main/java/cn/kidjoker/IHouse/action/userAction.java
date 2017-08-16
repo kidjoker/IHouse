@@ -33,18 +33,22 @@ public class userAction {
 	/**
 	 * 用户注册
 	 */
-	@ResponseBody
-	@RequestMapping(value="/register",method=RequestMethod.POST)
+	@RequestMapping(value="/register",method={RequestMethod.POST,RequestMethod.GET})
 	public String register(@RequestBody String user) {
-		return userService.saveDataToOss("hello,world");
+		//userService.saveDataToOss("hello,world");
+		return "index";
 	}
 	
 	/**
 	 * 用户登录
 	 */
-	@ResponseBody
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+	@RequestMapping(value="/login",method={RequestMethod.POST,RequestMethod.GET})
 	public String login(@RequestBody User user) {
 		return null;
 	}
+	
+	/**
+	 * 处理用户上传头像
+	 */
+	public void saveUserImage()
 }

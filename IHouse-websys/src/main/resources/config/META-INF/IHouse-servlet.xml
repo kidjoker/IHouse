@@ -8,11 +8,18 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
+	<!-- 注入mapping和handler类 匹配url -->
+	<mvc:annotation-driven />
+	
 	<!-- 开启注解 通过扫描的方式将控制器注入Spring IOC容器 -->
 	<context:component-scan base-package="cn.kidjoker.IHouse.action" />
 	
 	<!-- 通过注解,配置Spring MVC 静态资源处理器 -->
 	<mvc:resources mapping="/resources/**" location="/location/" />
 	
-	<mvc:annotation-driven />
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+   		<property name="prefix" value="/"/>  
+   		<property name="suffix" value=".jsp"></property>  
+   </bean>
+   
 </beans>
