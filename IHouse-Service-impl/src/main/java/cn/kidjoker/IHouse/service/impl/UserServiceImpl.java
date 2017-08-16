@@ -3,6 +3,7 @@
  */
 package cn.kidjoker.IHouse.service.impl;
 
+import cn.kidjoker.IHouse.model.User;
 import cn.kidjoker.IHouse.service.UserService;
 
 /**
@@ -11,5 +12,15 @@ import cn.kidjoker.IHouse.service.UserService;
  * @date 2017年8月14日 
  */
 public class UserServiceImpl implements UserService {
+
+	@Override
+	public void register(User user) {
+		
+	}
+
+	@Override
+	public void login(User user) {
+		
+	}
 
 }
