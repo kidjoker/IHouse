@@ -39,7 +39,7 @@ public class useraAction {
 	 * 用户登录
 	 */
 	@ResponseBody
-	@RequestMapping(value="login",method=RequestMethod.POST)
+	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public void login(@RequestBody User user) {
 		
 	}
