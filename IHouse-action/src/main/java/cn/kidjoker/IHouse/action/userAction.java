@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aliyun.oss.ClientConfiguration;
+import com.aliyun.oss.OSSClient;
+
 import cn.kidjoker.IHouse.model.User;
 import cn.kidjoker.IHouse.service.UserService;
 
@@ -21,18 +24,19 @@ import cn.kidjoker.IHouse.service.UserService;
  */
 @Controller
 @RequestMapping(value="/user")
-public class useraAction {
+public class userAction {
 	
 	@Autowired
 	private UserService userService;
+	
 	
 	/**
 	 * 用户注册
 	 */
 	@ResponseBody
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public void register(@RequestBody User user) {
-		
+	public String register(@RequestBody String user) {
+		return userService.saveDataToOss("hello,world");
 	}
 	
 	/**
@@ -40,7 +44,7 @@ public class useraAction {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public void login(@RequestBody User user) {
-		
+	public String login(@RequestBody User user) {
+		return null;
 	}
 }

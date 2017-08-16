@@ -3,8 +3,10 @@
  */
 package cn.kidjoker.IHouse.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.kidjoker.IHouse.alioss.client.OssClient;
 import cn.kidjoker.IHouse.model.User;
 import cn.kidjoker.IHouse.service.UserService;
 
@@ -16,6 +18,9 @@ import cn.kidjoker.IHouse.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
+	@Autowired
+	private OssClient ossClient;
+	
 	@Override
 	public void register(User user) {
 		
@@ -24,6 +29,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void login(User user) {
 		
+	}
+
+	@Override
+	public String saveDataToOss(String ss) {
+		return ossClient.doService(ss);
 	}
 
 }

@@ -13,5 +13,6 @@
 	
 	<!-- 通过注解,配置Spring MVC 静态资源处理器 -->
 	<mvc:resources mapping="/resources/**" location="/location/" />
-
+	
+	<mvc:annotation-driven />
 </beans>

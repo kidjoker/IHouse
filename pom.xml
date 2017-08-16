@@ -15,6 +15,7 @@
   	<module>IHouse-Service-impl</module>
   	<module>IHouse-commonUtil</module>
   	<module>IHouse-batch</module>
+  	<module>IHouse-AliOss</module>
   </modules>
   
   <properties>
@@ -92,9 +93,16 @@
     </dependency>
     
     <dependency>
-    		<groupId>org.apache.commons</groupId>
-    		<artifactId>commons-lang3</artifactId>
-    		<version>${apache-common-lang.version}</version>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-lang3</artifactId>
+    	<version>${apache-common-lang.version}</version>
+	</dependency>
+	
+	<!-- aliyun OSS -->
+	<dependency>
+    	<groupId>com.aliyun.oss</groupId>
+    	<artifactId>aliyun-sdk-oss</artifactId>
+    	<version>2.7.0</version>
 	</dependency>
   </dependencies>
 </project>
