@@ -15,17 +15,17 @@ import cn.kidjoker.IHouse.model.User;
 public interface UserService {
 	
 	/**
-	 * 用户注册
-	 */
-	public void register(User user);
-	
-	/**
 	 * 用户登录
 	 */
 	public void login(User user);
 	
 	/**
+	 * 用户注册
+	 */
+	public void saveUserBaseInfo(User user);
+	
+	/**
 	 * 保存数据到oss
 	 */
-	public void saveDataToOss(MultipartFile image);
+	public void saveDataToOss(MultipartFile image,String picName);
 }

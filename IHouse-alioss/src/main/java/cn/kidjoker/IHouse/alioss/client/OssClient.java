@@ -17,8 +17,10 @@
  */
 package cn.kidjoker.IHouse.alioss.client;
 
+import java.awt.CardLayout;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
@@ -54,7 +56,6 @@ public class OssClient {
 	private String accessKeyId = "LTAINOYKhov9BWHg";
 	private String accessKeySecret = "xDJeHmjazVdU9zZB1aIm4cAF2IrUGm";
 	
-	private ClientConfiguration config = null;
 	private OSSClient client = null;
 	
 	public OssClient() {
@@ -64,20 +65,35 @@ public class OssClient {
 	//初始化配置
 	public void doInit(){
 		//自定义配置oss
-		config = new ClientConfiguration();
 		client = new OSSClient(endpoint, accessKeyId, accessKeySecret);
 	}
 	
 	//使用oss
-	public void doService(MultipartFile image) {
+	public void doImageUpload(MultipartFile image,String picName) {
 		try {
-			client.putObject("kidjoker", "hello.jpg", new ByteArrayInputStream(image.getBytes()));
-		} catch (OSSException | ClientException | IOException e) {
-			logger.error("上传图片异常");
+			//设置文件类型
+			ObjectMetadata metadata = new ObjectMetadata();
+			metadata.setContentType("image/jpeg");
+			metadata.setContentLength(image.getSize());
+			
+			client.putObject("ihouseuserpic", picName + ".jpg", image.getInputStream(), metadata);
+		} 
+		catch (IOException e) {
+			logger.error("上传图片异常,上传时间: " + new Date());
+		}
+		catch(OSSException e) {
+			logger.error("oss服务端异常");
+		}
+		catch (ClientException e) {
+			logger.error("oss客户端异常");
 		}
 		finally {
 			this.doDestroy();
 		}
+	}
+	
+	public void doImageDownload(){
+		
 	}
 	
 	//关闭oss

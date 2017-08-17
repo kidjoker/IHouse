@@ -5,5 +5,5 @@
     <artifactId>IHouse</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>IHouse-AliOss</artifactId>
+  <artifactId>IHouse-alioss</artifactId>
 </project>

@@ -43,11 +43,19 @@ public class userAction {
 	}
 	
 	/**
-	 * 处理用户上传头像
+	 * 处理用户注册信息
 	 */
 	@RequestMapping(value="/saveRegisterInfo",method={RequestMethod.POST,RequestMethod.GET})
 	public void showRegisterInfo(registerRequestVo requestVo) {
-		userService.saveDataToOss(requestVo.getImage());
+		
+		//组织数据
+		User user = new User();
+		user.setMobile(requestVo.getMobile());
+		user.setName(requestVo.getName());
+		
+		userService.saveUserBaseInfo(user);
+		
+		userService.saveDataToOss(requestVo.getImage(),requestVo.getMobile() + requestVo.getName());
 	}
 	
 	/**

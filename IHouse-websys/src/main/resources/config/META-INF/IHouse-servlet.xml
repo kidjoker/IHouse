@@ -18,7 +18,7 @@
 	<mvc:resources mapping="/resources/**" location="/location/" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
-   		<property name="prefix" value="/"/>  
+   		<property name="prefix" value="/pages/"/>  
    		<property name="suffix" value=".jsp"></property>  
    </bean>
    
