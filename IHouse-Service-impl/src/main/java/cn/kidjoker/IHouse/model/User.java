@@ -31,11 +31,29 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 	
+	/** 编号 */
+	private Long id;
+	
 	/** 姓名 */
 	private String name;
 	
 	/** 手机号 */
 	private String mobile;
+
+	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the name

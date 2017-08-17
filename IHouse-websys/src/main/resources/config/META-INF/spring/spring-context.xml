@@ -7,17 +7,30 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
+	<context:property-placeholder location="classpath:config/META-INF/jdbc.properties" />
+    
 	<!-- 数据源配置 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		<property name="initialSize" value="${jdbc.initialSize}" />
-		<property name="maxActive" value="${jdbc.maxActive}" />
-		<property name="maxIdle" value="${jdbc.maxIdle}" />
-		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="initialPoolSize" value="${jdbc.initialSize}" />
+		<property name="maxPoolSize" value="${jdbc.maxTotal}" />
+		<property name="maxIdleTime" value="${jdbc.maxIdle}" />
+	</bean>
+	
+	<!-- mybatis配置 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath*:config/META-INF/dbase/*Mapper.xml" />
+	</bean>
+	
+	<!-- MyBatis配置信息扫描Bean，完成从META-INF配置项下的相应的MyBatis资源扫描 -->
+	<bean id="configurationScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.kidjoker.IHouse.dao"></property>  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" /> 
 	</bean>
 	
 	<!-- 开启声明式事务 -->
@@ -29,20 +42,4 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<bean id="resourceLoader" class="org.springframework.core.io.DefaultResourceLoader"></bean>
-	
-	<!-- 本地化消息资源配置 -->
-	<!-- <bean id="messageSource"
-		class="org.esbuilder.spring.i18n.ModularReloadableResourceBundleMessageSource">
-		<property name="cacheSeconds" value="-1" />
-		<property name="fallbackToSystemLocale" value="true" />
-		<property name="useCodeAsDefaultMessage" value="true" />
-		<property name="defaultEncoding" value="UTF-8" />
-		<property name="basenames">
-			<list>
-				<value>classpath*:META-INF/i18n/message</value>
-				<value>classpath*:META-INF/i18n/error</value>
-			</list>
-		</property>
-	</bean> -->
 </beans>

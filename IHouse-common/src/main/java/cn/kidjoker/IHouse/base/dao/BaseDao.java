@@ -36,10 +36,10 @@ import org.springframework.dao.DataAccessException;
 public interface BaseDao<M extends Serializable> {
 	
 	/** 插入 */
-	public void Insert(M param) throws DataAccessException;
+	public void insert(M param) throws DataAccessException;
 	
 	/** 插入 */
-	public void Insert(Map<String, Object> param) throws DataAccessException;
+	public void insert(Map<String, Object> param) throws DataAccessException;
 	
 	/** 查询单条 */
 	public M selectOne(M param) throws DataAccessException;

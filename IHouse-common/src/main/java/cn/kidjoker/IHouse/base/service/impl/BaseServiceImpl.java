@@ -40,12 +40,12 @@ public abstract class BaseServiceImpl<M extends Serializable,D extends BaseDao<M
 	
 	@Override
 	public void add(M param) {
-		getDao().Insert(param);
+		getDao().insert(param);
 	}
 
 	@Override
 	public void add(Map<String, Object> param) {
-		getDao().Insert(param);
+		getDao().insert(param);
 	}
 
 	@Override

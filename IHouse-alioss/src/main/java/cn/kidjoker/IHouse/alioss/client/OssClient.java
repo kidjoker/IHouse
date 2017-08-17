@@ -79,13 +79,13 @@ public class OssClient {
 			client.putObject("ihouseuserpic", picName + ".jpg", image.getInputStream(), metadata);
 		} 
 		catch (IOException e) {
-			logger.error("上传图片异常,上传时间: " + new Date());
+			logger.error("上传图片异常,上传时间: " + new Date() + e.getMessage());
 		}
 		catch(OSSException e) {
-			logger.error("oss服务端异常");
+			logger.error("oss服务端异常" + new Date() + e.getMessage());
 		}
 		catch (ClientException e) {
-			logger.error("oss客户端异常");
+			logger.error("oss客户端异常" + new Date() + e.getMessage());
 		}
 		finally {
 			this.doDestroy();
