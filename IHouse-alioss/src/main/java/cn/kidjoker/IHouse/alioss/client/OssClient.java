@@ -1,38 +1,16 @@
-/*
- * ================================================================
- * Copyright 2008-2017 Everelegance.
- * All Rights Reserved.
- *
- * This software is the confidential and proprietary information of
- * Everelegance Corp. Ltd, ("Confidential Information"). You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with Everelegance.
- * 
- * OPay项目组
- *
- * ================================================================
- *  创建人: jinzhijie
- *	创建时间: 2017年8月16日 - 下午6:00:15
- */
 package cn.kidjoker.IHouse.alioss.client;
 
-import java.awt.CardLayout;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Date;
-import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.aliyun.oss.ClientConfiguration;
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
-import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.ObjectMetadata;
 
 /**
