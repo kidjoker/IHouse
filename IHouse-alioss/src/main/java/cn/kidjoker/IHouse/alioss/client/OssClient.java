@@ -18,13 +18,20 @@
 package cn.kidjoker.IHouse.alioss.client;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.aliyun.oss.ClientConfiguration;
+import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.OSSObject;
+import com.aliyun.oss.model.ObjectMetadata;
 
 /**
  * <p>
@@ -39,6 +46,7 @@ import com.aliyun.oss.model.OSSObject;
 @Service
 public class OssClient {
 	
+	private static final Log logger = LogFactory.getLog(OssClient.class);
 	//oss 接入点
 	private String endpoint = "oss-cn-hongkong.aliyuncs.com";
 	
@@ -61,11 +69,15 @@ public class OssClient {
 	}
 	
 	//使用oss
-	public String doService(String param) {
-		client.putObject("kidjoker", "hello", new ByteArrayInputStream(param.getBytes()));
-	
-		OSSObject ossObject = client.getObject("kidjoker", "hello");
-		return ossObject.toString();
+	public void doService(MultipartFile image) {
+		try {
+			client.putObject("kidjoker", "hello.jpg", new ByteArrayInputStream(image.getBytes()));
+		} catch (OSSException | ClientException | IOException e) {
+			logger.error("上传图片异常");
+		}
+		finally {
+			this.doDestroy();
+		}
 	}
 	
 	//关闭oss

@@ -3,8 +3,11 @@
  */
 package cn.kidjoker.IHouse.action;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aliyun.oss.ClientConfiguration;
 import com.aliyun.oss.OSSClient;
 
+import cn.kidjoker.IHouse.api.vo.registerRequestVo;
 import cn.kidjoker.IHouse.model.User;
 import cn.kidjoker.IHouse.service.UserService;
 
@@ -33,10 +37,17 @@ public class userAction {
 	/**
 	 * 用户注册
 	 */
-	@RequestMapping(value="/register",method={RequestMethod.POST,RequestMethod.GET})
-	public String register(@RequestBody String user) {
-		//userService.saveDataToOss("hello,world");
-		return "index";
+	@RequestMapping(value="/showRegister",method={RequestMethod.POST,RequestMethod.GET})
+	public String showRegister() {
+		return "register";
+	}
+	
+	/**
+	 * 处理用户上传头像
+	 */
+	@RequestMapping(value="/saveRegisterInfo",method={RequestMethod.POST,RequestMethod.GET})
+	public void showRegisterInfo(registerRequestVo requestVo) {
+		userService.saveDataToOss(requestVo.getImage());
 	}
 	
 	/**
@@ -47,8 +58,4 @@ public class userAction {
 		return null;
 	}
 	
-	/**
-	 * 处理用户上传头像
-	 */
-	public void saveUserImage()
 }

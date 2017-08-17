@@ -5,6 +5,7 @@ package cn.kidjoker.IHouse.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.kidjoker.IHouse.alioss.client.OssClient;
 import cn.kidjoker.IHouse.model.User;
@@ -32,8 +33,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String saveDataToOss(String ss) {
-		return ossClient.doService(ss);
+	public void saveDataToOss(MultipartFile image) {
+		ossClient.doService(image);
 	}
 
 }
