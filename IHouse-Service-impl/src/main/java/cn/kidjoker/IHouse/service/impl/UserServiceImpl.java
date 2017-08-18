@@ -3,6 +3,8 @@
  */
 package cn.kidjoker.IHouse.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,8 +45,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserDao> implements U
 	}
 
 	@Override
-	public void saveDataToOss(MultipartFile image,String picName) {
-		ossClient.doImageUpload(image,picName);
+	public void saveDataToOss(List<MultipartFile> files,String fileName) {
+		ossClient.doFileUpload(files,fileName);
 	}
 
 }

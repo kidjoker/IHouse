@@ -24,6 +24,9 @@
 	  <param-value>classpath:/config/META-INF/IHouse-servlet.xml</param-value>
 	</init-param>
 	<load-on-startup>1</load-on-startup>
+	<multipart-config>
+		<max-file-size>2048820</max-file-size>
+	</multipart-config>
   </servlet>
   <servlet-mapping>
 	<servlet-name>IHouse</servlet-name>

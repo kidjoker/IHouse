@@ -3,6 +3,10 @@
  */
 package cn.kidjoker.IHouse.api.vo;
 
+import java.util.List;
+
+import javax.validation.constraints.Size;
+
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -13,13 +17,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class registerRequestVo {
 	
 	/** 用户姓名 */
+	@Size(max = 10)
 	private String name;
 	
 	/** mobile */
 	private String mobile;
 	
 	/** 头像 */
-	private MultipartFile image;
+	private List<MultipartFile> files;
 
 	public String getName() {
 		return name;
@@ -38,12 +43,12 @@ public class registerRequestVo {
 	}
 
 	
-	public MultipartFile getImage() {
-		return image;
+	public List<MultipartFile> getFiles() {
+		return files;
 	}
 
-	public void setImage(MultipartFile image) {
-		this.image = image;
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
 	}
 	
 }

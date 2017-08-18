@@ -42,4 +42,6 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<!-- i18n国际化配置 -->
+	
 </beans>

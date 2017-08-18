@@ -3,6 +3,8 @@
  */
 package cn.kidjoker.IHouse.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.kidjoker.IHouse.model.User;
@@ -27,5 +29,5 @@ public interface UserService {
 	/**
 	 * 保存数据到oss
 	 */
-	public void saveDataToOss(MultipartFile image,String picName);
+	public void saveDataToOss(List<MultipartFile> files,String fileName);
 }
