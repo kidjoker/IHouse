@@ -13,5 +13,15 @@
   		<artifactId>IHouse-action</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>cn.kidjoker</groupId>
+  		<artifactId>IHouse-commonUtil</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>cn.kidjoker</groupId>
+  		<artifactId>IHouse-common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>

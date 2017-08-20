@@ -9,12 +9,12 @@
   <dependencies>
   	<dependency>
   		<groupId>cn.kidjoker</groupId>
-  		<artifactId>IHouse-api</artifactId>
+  		<artifactId>IHouse-Service-impl</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>cn.kidjoker</groupId>
-  		<artifactId>IHouse-Service-impl</artifactId>
+  		<artifactId>IHouse-commonUtil</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>

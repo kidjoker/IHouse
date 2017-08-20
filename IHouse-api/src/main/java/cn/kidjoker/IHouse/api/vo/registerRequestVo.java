@@ -3,10 +3,12 @@
  */
 package cn.kidjoker.IHouse.api.vo;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -17,11 +19,15 @@ import org.springframework.web.multipart.MultipartFile;
 public class registerRequestVo {
 	
 	/** 用户姓名 */
-	@Size(max = 10)
+	@Length(max = 10, message="user.name")
 	private String name;
 	
 	/** mobile */
+	@Length(max = 11, message="user.mobile")
 	private String mobile;
+	
+	/** 时间 */
+	private Date date;
 	
 	/** 头像 */
 	private List<MultipartFile> files;
@@ -42,7 +48,14 @@ public class registerRequestVo {
 		this.mobile = mobile;
 	}
 
-	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public List<MultipartFile> getFiles() {
 		return files;
 	}

@@ -7,6 +7,9 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
+	<!-- 开启声明式事务 -->
+	<tx:annotation-driven transaction-manager="txManager" />	
+	
 	<context:property-placeholder location="classpath:config/META-INF/jdbc.properties" />
     
 	<!-- 数据源配置 -->
@@ -33,15 +36,27 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" /> 
 	</bean>
 	
-	<!-- 开启声明式事务 -->
-	<tx:annotation-driven transaction-manager="txManager" />	
-	
 	<!-- Spring委托 事务管理器 -->
 	<bean id="txManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<!-- i18n国际化配置 -->
-	
+	<!-- Spring 字段校验 -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">   
+    		<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>  
+    		<property name="validationMessageSource" ref="messageSource"/>  
+	</bean> 
+	 
+    <bean id="messageSource" 
+   		 class="org.springframework.context.support.ReloadableResourceBundleMessageSource" >
+   		 <property name="useCodeAsDefaultMessage" value="true" />  
+         <property name="cacheSeconds" value="0"></property>
+   		 <property name="basenames" >
+   		 	<list>
+   		 		<value>classpath:config/META-INF/i18n/message</value>
+   		 	</list>
+   		 </property>
+    </bean>
+    
 </beans>

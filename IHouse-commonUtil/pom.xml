@@ -6,4 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>IHouse-commonUtil</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>cn.kidjoker</groupId>
+  		<artifactId>IHouse-api</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

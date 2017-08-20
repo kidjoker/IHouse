@@ -8,8 +8,10 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
-	<!-- 注入mapping和handler类 匹配url -->
+    <!-- 注入mapping和handler类 匹配url -->
 	<mvc:annotation-driven />
+
+	<mvc:annotation-driven conversion-service="conversionService" />	
 	
 	<!-- 开启注解 通过扫描的方式将控制器注入Spring IOC容器 -->
 	<context:component-scan base-package="cn.kidjoker.IHouse.action" />
@@ -17,13 +19,38 @@
 	<!-- 通过注解,配置Spring MVC 静态资源处理器 -->
 	<mvc:resources mapping="/resources/**" location="/location/" />
 	
+	<!-- 页面解析器 通过前后缀拼接完成资源路径 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
    		<property name="prefix" value="/pages/"/>  
-   		<property name="suffix" value=".jsp"></property>  
-   </bean>
-   
-   <bean id="multipartResolver" 
-   		class="org.springframework.web.multipart.support.StandardServletMultipartResolver" >
-   </bean>
-   
+   		<property name="suffix" value=".html"></property>  
+    </bean>
+    
+    <!-- servlet 3.0之后 使用servlet内置的StandardServletMultipartResolver解决文件上传的问题
+   	 	servlet 3.0之前 使用Apache的CommonFileUpload(第三方库)完成文件上传 -->
+    <bean id="multipartResolver" 
+        class="org.springframework.web.multipart.support.StandardServletMultipartResolver" >
+    </bean>
+    
+    <!-- 数据格式转换 -->
+    <!-- <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+    		<property name="converters">
+    			<list>
+    				<bean class="cn.kidjoker.IHouse.converter.StringToDateConverter">
+    					<constructor-arg type="java.lang.String" value="MM-DD-YYYY" />
+    				</bean>
+    			</list>
+    		</property> 
+    </bean> -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    		<property name="formatters">
+    			<list>
+    				<bean class="cn.kidjoker.IHouse.formatter.Dateformatter">
+    					<constructor-arg type="java.lang.String" value="MM-dd-yyyy" />
+    				</bean>
+    			</list>
+    		</property>
+    </bean>
+    
+    <bean id="validator" class="cn.kidjoker.IHouse.validator.UserValidator"></bean>
+    
 </beans>

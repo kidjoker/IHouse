@@ -48,7 +48,7 @@ public class UploadFileImpl implements UploadService {
 			String fileName = multipartFile.getOriginalFilename();
 			
 			try {
-				File fileNew = new File("d:\\" + fileName);
+				File fileNew = new File("/kidjoker" + fileName);
 				multipartFile.transferTo(fileNew);
 			}catch (IOException e) {
 				e.printStackTrace();
